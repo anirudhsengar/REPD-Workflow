@@ -126,6 +126,8 @@ jobs:
             exit 1
           fi
 
+          cat "$csv_file"
+
           echo "Generated CSV file: $csv_file"
           echo "csv_file_path=$csv_file" >> $GITHUB_ENV
 
