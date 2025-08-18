@@ -2833,3 +2833,4 @@ void TR_DataAccessAccelerator::insertByteArrayBNDCHK(TR::TreeTop* callTreeTop,  
 
    callTreeTop->insertBefore(TR::TreeTop::create(comp, TR::Node::createWithSymRef(TR::BNDCHK, 2, 2, arraylengthNode, offsetNode, comp->getSymRefTab()->findOrCreateArrayBoundsCheckSymbolRef(callNode->getSymbol()->getResolvedMethodSymbol()))));
    }
+   
