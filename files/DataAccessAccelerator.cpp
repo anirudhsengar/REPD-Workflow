@@ -102,7 +102,7 @@ int32_t TR_DataAccessAccelerator::perform()
 
        // We cannot handle arraylets because hardware intrinsics act on contiguous memory
        !comp()->generateArraylets() && !TR::Compiler->om.useHybridArraylets() &&
-       (!TR::Compiler->om.isOffHeapAllocationEnabled() || comp()->getOption(TR_DisableVectorBCD)))
+       !(TR::Compiler->om.isOffHeapAllocationEnabled() && comp()->getOption(TR_DisableVectorBCD)))
      {
 
      // A vector to keep track of variable packed decimal calls
@@ -2833,3 +2833,4 @@ void TR_DataAccessAccelerator::insertByteArrayBNDCHK(TR::TreeTop* callTreeTop,  
 
    callTreeTop->insertBefore(TR::TreeTop::create(comp, TR::Node::createWithSymRef(TR::BNDCHK, 2, 2, arraylengthNode, offsetNode, comp->getSymRefTab()->findOrCreateArrayBoundsCheckSymbolRef(callNode->getSymbol()->getResolvedMethodSymbol()))));
    }
+   
